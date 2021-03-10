@@ -14,7 +14,13 @@
         >
         <Button
             android:text="Sil"
-            android:id="@+id/sil"
+            android:id="@+id/buttonSil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <Button
+            android:text="Ekle"
+            android:id="@+id/buttonEkle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
