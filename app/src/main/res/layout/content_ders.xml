@@ -7,23 +7,24 @@
 
     <LinearLayout
         android:id="@+id/linearlayout"
-        android:padding="10dp"
         android:orientation="vertical"
+        android:gravity="center|top"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <Button
-            android:text="Sil"
-            android:id="@+id/buttonSil"
+        <EditText
+            android:id="@+id/edittext"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="85dp"/>
         <Button
-            android:text="Ekle"
-            android:id="@+id/buttonEkle"
+            android:id="@+id/button"
+            android:text="Ara"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_height="wrap_content"/>
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

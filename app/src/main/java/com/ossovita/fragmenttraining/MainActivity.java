@@ -7,45 +7,38 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    LinearLayout ll;
-    Button buttonSil,buttonEkle;
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+    Button button;
+    EditText editText;
+    String siteAddress;
+    FrameLayout frameLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_ders);
-        buttonEkle = findViewById(R.id.buttonEkle);
-        buttonSil = findViewById(R.id.buttonSil);
-        ll = findViewById(R.id.linearlayout);
-        fragment_a fragment_a = new fragment_a();
-        fragment_b fragment_b = new fragment_b();
 
-        transaction.add(R.id.linearlayout,fragment_a,"FragmentA");
-        transaction.add(R.id.linearlayout,fragment_b,"FragmentB");
-        transaction.commit();
-
-        buttonEkle.setOnClickListener(new View.OnClickListener() {
+        button = findViewById(R.id.button);
+        editText = findViewById(R.id.edittext);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                transaction = fragmentManager.beginTransaction();
-                transaction = transaction.add(R.id.linearlayout,fragment_b,"FragmentB");
-                transaction.commit();
+                siteAddress = editText.getText().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("siteAddress",siteAddress);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                fragment_a fragment_a = new fragment_a();
+                fragment_a.setArguments(bundle);
+                transaction.add(R.id.framelayout,fragment_a,"fragmentA").commit() ;
+
+
             }
         });
-
-        buttonSil.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               transaction = fragmentManager.beginTransaction();
-               transaction.remove(fragment_b);
-               transaction.commit();
-            }
-        });
-
 
 
     }
